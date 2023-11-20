@@ -1,7 +1,7 @@
 # Totop_PWA
 A PWA APP For TOTP (RFC 6238):  
 
-<img src="https://raw.githubusercontent.com/AlirezaP/Totop_PWA/master/BlazorApp2/Client/wwwroot/Img/Demo/A.png" width="50%" height="50%">  
+<img src="https://raw.githubusercontent.com/AlirezaP/Totop_PWA/master/BlazorApp2/Client/wwwroot/Img/Demo/A.png" width="80%" height="50%">  
 
 <img src="https://raw.githubusercontent.com/AlirezaP/Totop_PWA/master/BlazorApp2/Client/wwwroot/Img/Demo/B.png" width="50%" height="50%">  
 
