@@ -1,0 +1,106 @@
+﻿@using System.Globalization;
+@using System.Timers;
+<svg class="loading-progress-Custom" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:90px; float:left;">
+    <circle cx="50" cy="50" r="45" />
+    <circle cx="50" cy="50" r="45" stroke-dasharray="@_dashArray" transform="rotate(-90 50 50)" style="stroke:#1b6ec2;" />
+    @*    <text x="50%" y="50%" text-anchor="middle" stroke-width="1px" dy=".3em">@_percentage%</text>*@
+    <text x="50%" y="50%" text-anchor="middle" stroke-width="1px" dy=".3em">@_timerValue S</text>
+</svg>
+
+@code {
+    [Parameter] public string UID { get; set; }
+    [Parameter] public double TimerValue { get; set; }
+    [Parameter] public EventCallback<double> TimerValueChanged { get; set; } // added parameter for two-way binding
+    [Parameter] public EventCallback<object> OnValueTimer { get; set; }
+
+    private bool isFirst = true;
+    private string _percentage;
+    //private double _timerValue;
+    private double _timerValue
+    {
+        get => TimerValue; // use the parameter value as the field value
+        set
+        {
+            if (value <= 0)
+            {
+                _percentage = "1";
+                //_dashArray = $"{_progress * 2.82} 282";
+                index = 100 / value;
+                _progress = 0;
+                _dashArray = $"{_progress * 2.82} 282";
+                //_timer.Start();
+            }
+
+            if (TimerValue == value) return; // check if the value has changed
+            TimerValue = value; // update the parameter value
+            TimerValueChanged.InvokeAsync(value); // notify the parent component of the change
+
+
+        }
+    }
+
+    private string _dashArray;
+    private double _progress = 0;
+    private Timer _timer;
+
+    private double index = 0;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+        }
+    }
+
+
+    protected override void OnParametersSet()
+    {
+        //_timerValue = TimerValue;
+        //_percentage = "1";
+        //_dashArray = $"{_progress * 2.82} 282";
+        //index = 100 / _timerValue;
+        //_progress = 0;
+
+    }
+
+    public void SetParam(double tv)
+    {
+        _timerValue = tv; // use the setter to update the parameter value
+        _percentage = "1";
+        _dashArray = $"{_progress * 2.82} 282";
+        index = 100 / _timerValue;
+        _progress = 0;
+        _timer.Start();
+    }
+
+    protected override void OnInitialized()
+    {
+        _timer = new Timer(1000);
+        _timer.Elapsed += OnTimerElapsed;
+        _timer.Start();
+    }
+
+    private async void OnTimerElapsed(object sender, ElapsedEventArgs e)
+    {
+        if (_timerValue > 0)
+        {
+            _timerValue -= 1; // use the setter to update the parameter value
+
+            await InvokeAsync(StateHasChanged);
+        }
+        else
+        {
+           // await OnValueTimer.InvokeAsync(this);
+           // _timer.Stop();
+        }
+
+        if (_progress < 100)
+        {
+            _progress += index;
+            _dashArray = $"{_progress * 2.82} 282";
+            await InvokeAsync(StateHasChanged);
+        }
+
+    }
+}

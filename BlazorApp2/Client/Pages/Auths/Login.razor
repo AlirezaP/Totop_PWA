@@ -1,0 +1,44 @@
+﻿@page "/login"
+@layout EmptyLayout
+@using System.Security.Claims;
+@using BlazorApp2.Client.Security;
+@using Microsoft.AspNetCore.Components.Authorization
+@inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3 style="text-align:center">Totp PWA</h3>
+
+
+<div class="col-md-12" style="text-align:center;" @onsubmit="SubmitForm">
+    <form class="form" style="margin-left:5%; margin-right:5%;">
+        <div class="title">OTP</div>
+        <div class="title">کلمه عبور</div>
+        <p class="message">جهت احراز هویت لطفا کلمه عبور خود را وارد نمایید</p>
+        <div class="inputs">
+            <input id="input1" type="text" maxlength="15">
+        </div>
+        <div style="text-align:center;">
+            <button class="action" type="submit" @onclick=SubmitForm>ورود</button>
+        </div>
+    </form>
+</div>
+
+@code {
+    private string password;
+
+    private async Task SubmitForm()
+    {
+        // Add authentication logic here
+        // For simplicity, you can use a basic check for demonstration purposes
+        if (password == "demo")
+        {
+            
+        }
+        else
+        {
+        
+        }
+
+        NavigationManager.NavigateTo("/home");
+    }
+}

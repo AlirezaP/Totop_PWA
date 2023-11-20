@@ -1,0 +1,144 @@
+﻿@page "/New"
+@using BlazorApp2.Client.Models.Totp;
+@using BlazorApp2.Client.Pages.Components;
+@using BlazorApp2.Client.Security;
+@using BlazorApp2.Client.Services;
+@using IndexedDB.Blazor;
+@using System.Security.Cryptography;
+@using static BlazorApp2.Client.Models.Totp.TotpDBContext;
+@using Newtonsoft;
+@using Blazor.SubtleCrypto
+@using OtpNet;
+@using System.Text;
+@inject ICryptoService Crypto
+@inject IIndexedDbFactory DbFactory
+@inject IJSRuntime IJS
+@inject IToastService ToastService
+
+
+<PageTitle>Counter</PageTitle>
+
+<div class="col-md-12">
+    <div class="col-md-12">
+        <label style="float:right; font-weight:bold">نوع رمز پویا</label>
+        <div class="col-md-12">
+            <select class="form-control" style="text-align:right;" @bind="SelectedLoginCodeType">
+                <option value="1">نوع 1</option>
+                <option value="2">نوع 2</option>
+                <option value="3">نوع 3</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top:2%">
+        <label style="float:right; font-weight:bold">@selectedLoginCodeTypeTitle (عنوان)</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" style="text-align:right;" @bind="selectedLoginCode" />
+        </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top:2%">
+        <label style="float:right; font-weight:bold">کلید تولید رمز</label>
+        <div class="col-md-12">
+            <input type="text" class="form-control" style="text-align:right;" @bind="selectedKey" />
+        </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top:5%; float:right;">
+        <button class="btn btn-success" @onclick="AddSeed">ذخیره</button> |   <button class="btn btn-warning" @onclick="GetSeed"><img src="/Img/QRcode.png" style="width:32px;" /></button>
+    </div>
+</div>
+
+
+
+@code {
+    private int selectedLoginCodeType = 1;
+    public int SelectedLoginCodeType
+    {
+        get
+        {
+            return selectedLoginCodeType;
+        }
+        set
+        {
+            selectedLoginCodeType = value;
+            selectedLoginCodeTypeTitle = GetLoginTypeTitle(value);
+        }
+    }
+
+    //-------------------------------------------------------------
+
+    private string selectedLoginCodeTypeTitle = "نوع 1";
+    private string selectedLoginCode = "";
+    private string selectedKey = "";
+
+
+    //-------------------------------------------------------------
+
+    private IDataBase _db;
+    private ToastParameters _toastParameters = default!;
+
+    //-------------------------------------------------------------
+
+    protected override void OnInitialized()
+    {
+        //_toastParameters = new ToastParameters()
+        //       .Add(nameof(ToastComponent.Title), "I'm a custom toast component with parameters")
+        //       .Add(nameof(ToastComponent.ToastParam), "I'm a parameter");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _db = new BlazorApp2.Client.Services.DataBase(DbFactory, IJS, "secret");
+        }
+    }
+
+    //-------------------------------------------------------------
+
+    private void AddSeed()
+    {
+        //ToastService.ShowToast<ToastComponent>(
+        //    _toastParameters, settings => { settings.Timeout = 5; settings.ShowProgressBar = true; });
+
+        try
+        {
+            var model = new TotpInfo
+                {
+                    LoginCode = selectedLoginCode,
+                    Step = 6,
+                    Time = 60,
+                    KeySec = selectedKey,
+                };
+
+            _db.SaveTotp(model);
+
+            ToastService.ShowSuccess("اطلاعات با موفقیت اضافه گردید");
+        }
+        catch (Exception ex)
+        {
+            ToastService.ShowError(ex.Message);
+        }
+
+    }
+
+    private async void GetSeed()
+    {
+        ToastService.ShowWarning("این قابلیت به زودی اضافه می گردد");
+    }
+
+    private string GetLoginTypeTitle(int id)
+    {
+        switch (id)
+        {
+            case 1: return "نوع 1";
+            case 2: return "نوع 2";
+            case 3: return "نوع 3";
+        }
+
+        return "";
+    }
+    //--------------------------------------------------------------------------------
+
+}
