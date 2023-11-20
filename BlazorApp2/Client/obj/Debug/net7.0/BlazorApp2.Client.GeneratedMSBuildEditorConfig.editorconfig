@@ -1,0 +1,69 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = BlazorApp2.Client
+build_property.RootNamespace = BlazorApp2.Client
+build_property.ProjectDir = F:\Program(C)\Temp\BlazorApp2\BlazorApp2\Client\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = F:\Program(C)\Temp\BlazorApp2\BlazorApp2\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Pages/Components/ToastComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xUb2FzdENvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Pages/StartPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhcnRQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Shared/EmptyLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVtcHR5TGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Pages/Auths/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aHNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-v5nejwae6l
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Pages/Components/LoadingCircle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xMb2FkaW5nQ2lyY2xlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-gvgsvaibup
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-y1w3392hfl
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Pages/New.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-2m361rno9r
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-lcph0kayp6
+
+[F:/Program(C)/Temp/BlazorApp2/BlazorApp2/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-3xy2y9g3uc

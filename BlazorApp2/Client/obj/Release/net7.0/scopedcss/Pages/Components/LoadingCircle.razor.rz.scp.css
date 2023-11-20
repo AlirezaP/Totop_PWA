@@ -1,0 +1,49 @@
+.loading-progress-Custom[b-gvgsvaibup] {
+/*    position: relative;
+    display: block;
+    width: 8rem;
+    height: 8rem;
+    margin: 20vh auto 1rem auto;*/
+}
+
+
+    .loading-progress-Custom circle[b-gvgsvaibup] {
+        fill: none;
+        stroke: #e0e0e0;
+        stroke-width: 2px; /* Adjust the stroke width as needed */
+        transform-origin: 50% 50%;
+        transform: rotate(-90deg);
+    }
+
+/*
+    .loading-progress-Custom circle {
+        fill: none;
+        stroke: #e0e0e0;
+        stroke-width: 0.6rem;
+        transform-origin: 50% 50%;
+        transform: rotate(-90deg);
+    }
+*/
+
+        .loading-progress-Custom circle:last-child[b-gvgsvaibup] {
+            stroke: #1b6ec2;
+            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8) 282; /* Updated this line */
+            transition: stroke-dasharray 0.05s ease-in-out;
+        }
+
+/*        .loading-progress-Custom circle:last-child {
+            stroke: #1b6ec2;
+            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+            transition: stroke-dasharray 0.05s ease-in-out;
+        }*/
+
+.loading-progress-Custom-text[b-gvgsvaibup] {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+}
+
+    .loading-progress-Custom-text[b-gvgsvaibup]:after {
+        content: var(--blazor-load-percentage-text, "Loading");
+    }
